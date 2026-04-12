@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pink: #e91e8c;
+  --color-pink-light: #fce4ec;
+  --color-pink-border: #f48fb1;
+  --color-green-wa: #25d366;
+  --color-red-price: #c62828;
+  --color-gray-text: #555;
+}
+
+@layer base {
+  body {
+    @apply bg-[#fff5f7] text-[#222] antialiased;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-pink-border/30 rounded-full hover:bg-pink-border/50 transition-colors;
+}
+
+
