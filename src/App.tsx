@@ -26,8 +26,8 @@ const PRODUCTS = [
   {id:15, name:'Docena flores', desc:'Ramo de 12 flores.', price:450, oldPrice:null, emoji:'💐', image: 'https://i.postimg.cc/d7BQMGKV/image.jpg', cat:'Flores', wa:'dulce'},
   {id:16, name:'Paquete berry fresco', desc:'Fresa + blueberry + zarzamora + frambuesa.', price:290, oldPrice:null, emoji:'🫐', image: 'https://i.postimg.cc/tTwHrXn3/Gemini_Generated_Image_nn34utnn34utnn34.png', cat:'Fruta fresca', wa:'fresas'},
   {id:17, name:'Paquete 2kg fresa congelada', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/6qZxgDCj/Gemini_Generated_Image_eqrj7eeqrj7eeqrj.png', cat:'Fruta congelada', wa:'fresas'},
-  {id:18, name:'Paquete mango congelado 2kg', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🥭', image: 'https://i.postimg.cc/76Dz5kZn/Gemini-Generated-Image_5snkhi5snkhi5snk-(1).png', cat:'Fruta congelada', wa:'fresas'},
-  {id:19, name:'Paquete fresa mango', desc:'1kg fresa + 1kg mango.', price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/cC3G2VfD/Gemini_Generated_Image_7f18ag7f18ag7f18.png', cat:'Fruta congelada', wa:'fresas'},
+  {id:18, name:'Paquete mango congelado 2kg', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🥭', image: 'https://i.postimg.cc/76Dz5kZn/Gemini-Generated-Image-5snkhi5snkhi5snk-(1).png', cat:'Fruta congelada', wa:'fresas'},
+  {id:19, name:'Paquete fresa mango', desc:'1kg fresa + 1kg mango.', price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/cC3G2VfD/Gemini-Generated-Image-7f18ag7f18ag7f18.png', cat:'Fruta congelada', wa:'fresas'},
   {id:20, name:'Paquete mix congelado 2kg', desc:'2kg de mix de berries.', price:230, oldPrice:null, emoji:'🫐', image: 'https://i.postimg.cc/gXBqcXP8/image.jpg', cat:'Fruta congelada', wa:'fresas'},
   {id:21, name:'Paquete berry congelado', desc:'Mix de 2kg congelado.', price:250, oldPrice:null, emoji:'❄️', image: 'https://i.postimg.cc/76dyBxJd/Gemini_Generated_Image_hf2nzkhf2nzkhf2n.png', cat:'Fruta congelada', wa:'fresas'},
   {id:22, name:'Jugos verdes 7 porciones', desc:'7 bolsitas listas para licuar.', price:180, oldPrice:null, emoji:'🥬', image: 'https://i.postimg.cc/NMSwNg28/Gemini_Generated_Image_u3fex9u3fex9u3fe.png', cat:'Jugos congelados', wa:'fresas'},
@@ -98,12 +98,11 @@ export default function App() {
           </div>
           <div className="space-y-4">
             <div className="rounded-2xl aspect-square shadow-2xl transform rotate-3 overflow-hidden"><img src="https://i.postimg.cc/RhWZFsKG/images-(3).jpg" className="w-full h-full object-cover" referrerPolicy="no-referrer" /></div>
-            <div className="rounded-2xl aspect-square shadow-2xl transform -rotate-2 overflow-hidden"><img src="https://i.postimg.cc/cC3G2VfD/Gemini_Generated_Image_7f18ag7f18ag7f18.png" className="w-full h-full object-cover" referrerPolicy="no-referrer" /></div>
+            <div className="rounded-2xl aspect-square shadow-2xl transform -rotate-2 overflow-hidden"><img src="https://i.postimg.cc/cC3G2VfD/Gemini-Generated-Image-7f18ag7f18ag7f18.png" className="w-full h-full object-cover" referrerPolicy="no-referrer" /></div>
           </div>
         </div>
       </section>
 
-      {/* SECCIÓN DE LOGOS - MANTENIENDO LO QUE YA FUNCIONABA */}
       <header className="bg-pink-light rounded-2xl p-6 mb-6 border border-pink-border shadow-sm flex flex-col items-center gap-6">
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
           <img className="h-40 md:h-48 w-auto object-contain" src="https://i.postimg.cc/vxgQwNrv/2.gif" alt="Dulce Fresa" referrerPolicy="no-referrer" />
