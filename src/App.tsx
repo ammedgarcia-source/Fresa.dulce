@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { 
   MapPin, 
   ShoppingCart, 
   Plus, 
   Minus, 
   Trash2, 
-  ExternalLink, 
+  ExternalLink,
   X,
   Truck,
   Clock,
@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 
 const WA_DULCE = '524494939383';
-const WA_FRESAS = '524491063636';
+const WA_FRESAS = '524493897519';
 
 const PRODUCTS = [
   // DULCE FRESA — Especialidades
@@ -213,57 +213,125 @@ export default function App() {
                 </div>
               </div>
               <div className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform -rotate-2 hover:rotate-0 transition-all duration-500">
-                <img src="https://i.postimg.cc/gXBqcXP8/image.jpg" className="w-full h-full object-cover" alt="Fruta" referrerPolicy="no-referrer" />
+                <img src="https://i.postimg.cc/cC3G2VfD/Gemini_Generated_Image_7f18ag7f18ag7f18.png" className="w-full h-full object-cover" alt="Fruta" referrerPolicy="no-referrer" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                  <p className="text-xs font-bold">Fruta Congelada</p>
+                  <p className="text-xs font-bold">Congelados</p>
                 </div>
               </div>
             </div>
+            
+            {/* Decorative element */}
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-pink-400/20 blur-3xl rounded-full animate-pulse"></div>
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 blur-3xl rounded-full animate-pulse"></div>
           </div>
         </div>
       </section>
 
-      <header className="flex flex-col items-center mb-10">
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 mb-6">
-          <img src="https://i.postimg.cc/fWf59n4v/image.jpg" alt="Dulce Fresa Logo" className="h-20 md:h-28 w-auto object-contain" referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/3R91f93Z/image.jpg" alt="Fresas AGS Logo" className="h-20 md:h-28 w-auto object-contain" referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/0jWj6m9Z/image.jpg" alt="Hecho en AGS Logo" className="h-24 md:h-32 w-auto object-contain" referrerPolicy="no-referrer" />
-        </div>
-        <div className="text-center">
-          <p className="text-gray-text font-bold text-sm md:text-base uppercase tracking-widest mb-1">Fresas y productos artesanales</p>
-          <div className="flex items-center justify-center gap-2 text-pink font-bold">
-            <MapPin className="w-4 h-4" />
-            <span>Aguascalientes, AGS</span>
+      {/* Hero Section (Logos) */}
+      <header className="bg-pink-light rounded-2xl p-6 mb-6 border border-pink-border shadow-sm">
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+            <img 
+              className="h-40 md:h-48 w-auto object-contain" 
+              src="https://i.postimg.cc/vxgQwNrv/2.gif" 
+              alt="Dulce Fresa"
+              referrerPolicy="no-referrer"
+            />
+            <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
+            <img 
+              className="h-28 md:h-32 w-auto object-contain" 
+              src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO(1).png" 
+              alt="Fresas AGS"
+              referrerPolicy="no-referrer"
+            />
+            <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
+            <img 
+              className="h-32 md:h-40 w-auto object-contain" 
+              src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png" 
+              alt="Hecho en AGS"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          
+          <div className="text-center">
+            <p className="text-base md:text-lg font-bold text-[#880e4f] mb-1">Fresas y productos artesanales</p>
+            <span className="inline-flex items-center gap-1.5 bg-[#f8bbd0] text-[#880e4f] text-sm px-4 py-1.5 rounded-full font-bold shadow-sm">
+              <MapPin className="w-4 h-4" />
+              Aguascalientes, AGS
+            </span>
           </div>
         </div>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-        <div className="bg-green-wa/10 border border-green-wa/20 rounded-3xl p-6 flex flex-col items-center text-center group hover:bg-green-wa/20 transition-all">
-          <WhatsAppIcon className="w-10 h-10 fill-green-wa mb-3" />
-          <h3 className="font-black text-green-wa text-lg mb-1">Dulce Fresa</h3>
-          <p className="text-xs text-gray-text mb-4">Postres, arreglos y detalles</p>
-          <div className="flex gap-3 mb-4">
-            <a href="https://www.facebook.com/Dulce.Fresa.Ags/followers" target="_blank" className="p-2 bg-white rounded-full text-blue-600 shadow-sm hover:scale-110 transition-transform"><Facebook className="w-4 h-4" /></a>
-            <a href="https://www.instagram.com/dulce.fresa.deli/" target="_blank" className="p-2 bg-white rounded-full text-pink-600 shadow-sm hover:scale-110 transition-transform"><Instagram className="w-4 h-4" /></a>
-            <a href="https://www.tiktok.com/@dulce.fresa.ags2" target="_blank" className="p-2 bg-white rounded-full text-black shadow-sm hover:scale-110 transition-transform"><Music2 className="w-4 h-4" /></a>
+      {/* WhatsApp Banners */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
+          <h3 className="text-sm font-bold text-green-800 flex items-center gap-2">
+            🍓 Dulce Fresa — Arreglos y postres
+          </h3>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Fresas con chocolate, arreglos, flores y vasos con crema
+          </p>
+          <div className="flex flex-wrap gap-2 mt-2">
+            <a 
+              href={`https://wa.me/${WA_DULCE}?text=${encodeURIComponent('¡Hola! Me gustaría pedir de Dulce Fresa 🍓')}`}
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-green-600 transition-colors"
+            >
+              <WhatsAppIcon className="w-4 h-4 fill-white" />
+              WhatsApp
+            </a>
+            <a 
+              href="https://www.facebook.com/Dulce.Fresa.Ags/followers"
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-[#166fe5] transition-colors"
+            >
+              <Facebook className="w-4 h-4" />
+              Facebook
+            </a>
+            <a 
+              href="https://www.instagram.com/dulce.fresa.deli/"
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-[#E4405F] text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-[#d62e4c] transition-colors"
+            >
+              <Instagram className="w-4 h-4" />
+              Instagram
+            </a>
+            <a 
+              href="https://www.tiktok.com/@dulce.fresa.ags2"
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-black text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-gray-900 transition-colors"
+            >
+              <Music2 className="w-4 h-4" />
+              TikTok
+            </a>
           </div>
-          <a href={`https://wa.me/${WA_DULCE}`} target="_blank" className="bg-green-wa text-white px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 shadow-lg shadow-green-200">
-            WhatsApp <ExternalLink className="w-4 h-4" />
-          </a>
         </div>
-        <div className="bg-blue-50 border border-blue-100 rounded-3xl p-6 flex flex-col items-center text-center group hover:bg-blue-100 transition-all">
-          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mb-3 shadow-lg shadow-blue-200">
-            <Truck className="w-6 h-6 text-white" />
+        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
+          <h3 className="text-sm font-bold text-green-800 flex items-center gap-2">
+            🍌 Fresas de AGS — Fruta y congelados
+          </h3>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Fruta fresca, fruta congelada y jugos congelados
+          </p>
+          <div className="flex flex-wrap gap-2 mt-2">
+            <a 
+              href={`https://wa.me/${WA_FRESAS}?text=${encodeURIComponent('¡Hola! Me gustaría comprar de Fresas AGS 🍓')}`}
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-green-600 transition-colors"
+            >
+              <WhatsAppIcon className="w-4 h-4 fill-white" />
+              WhatsApp
+            </a>
+            <a 
+              href="https://www.facebook.com/fresas.para.todos"
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-[#166fe5] transition-colors"
+            >
+              <Facebook className="w-4 h-4" />
+              Facebook
+            </a>
           </div>
-          <h3 className="font-black text-blue-800 text-lg mb-1">Fresas AGS</h3>
-          <p className="text-xs text-gray-text mb-4">Fruta fresca y congelada</p>
-          <div className="flex gap-3 mb-4">
-            <a href="https://www.facebook.com/fresas.para.todos" target="_blank" className="p-2 bg-white rounded-full text-blue-700 shadow-sm hover:scale-110 transition-transform"><Facebook className="w-4 h-4" /></a>
-          </div>
-          <a href={`https://wa.me/${WA_FRESAS}`} target="_blank" className="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 shadow-lg shadow-blue-200">
-            WhatsApp <ExternalLink className="w-4 h-4" />
-          </a>
         </div>
       </div>
 
@@ -532,248 +600,248 @@ export default function App() {
           </div>
         </div>
       )}
-
-      {/* Quienes Somos */}
-      <section id="nosotros" className="mt-12 bg-white p-8 rounded-3xl border border-pink-border shadow-sm overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="order-2 lg:order-1">
-            <h2 className="text-3xl font-bold text-[#880e4f] mb-4">Tu tiempo es nuestro compromiso</h2>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              Desde 2019, somos una pareja de esposos dedicada a llevar lo mejor del mercado hasta tu puerta. 
-              Surgimos como una solución de apoyo en tiempos difíciles y hoy nos hemos consolidado como los 
-              aliados estratégicos de familias y empresas en Aguascalientes.
-            </p>
-
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold text-[#c2185b] flex items-center gap-2">
-                ¿Qué hacemos por ti?
-              </h3>
-              
-              <div className="grid gap-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900">Ahorro de tiempo</h4>
-                    <p className="text-sm text-gray-500">Olvídate de las filas y el tráfico; nosotros hacemos el súper por ti.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900">Experiencia</h4>
-                    <p className="text-sm text-gray-500">Más de 6 años atendiendo al sector privado y comercial.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900">Confianza</h4>
-                    <p className="text-sm text-gray-500">Calidad seleccionada personalmente, como si fuera para nuestra propia casa.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10 p-6 bg-[#fce4ec] rounded-2xl border-l-4 border-[#880e4f]">
-              <p className="text-lg font-bold text-[#880e4f] italic">
-                "Nacimos para cuidarte, crecimos para servirte"
-              </p>
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-pink-light rounded-[2rem] -rotate-2 z-0"></div>
-              <img 
-                src="https://i.postimg.cc/HWb7sMkS/Whats-App-Image-2026-04-12-at-12-13-00.jpg" 
-                alt="Nosotros" 
-                className="relative z-10 w-full h-auto rounded-3xl shadow-xl object-cover aspect-[4/5]"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-lg z-20 flex items-center gap-2">
-                <Heart className="w-5 h-5 text-red-500 fill-red-500" />
-                <span className="font-bold text-gray-900">Desde 2019</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Misión y Visión */}
-      <footer className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-pink-border pt-10 pb-10">
-        <div className="bg-white p-6 rounded-3xl border border-pink-border shadow-sm">
-          <h3 className="text-xl font-bold text-[#880e4f] mb-3 flex items-center gap-2">
-            <span className="text-2xl">🎯</span> Misión
-          </h3>
-          <p className="text-sm text-gray-600 leading-relaxed italic">
-            "Mira, lo que buscamos en Fresas de Ags es bien simple pero bien cuidado: llevarle a la gente las mejores fresas, las de aquí, las de Aguascalientes. Queremos que cuando prueben algo de Dulce Fresa sientan que no es cualquier postre, ¿sabes? Es frescura de verdad, seleccionada a mano... con ese toque artesanal y un trato que te haga sentir en confianza, como en casa."
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-3xl border border-pink-border shadow-sm">
-          <h3 className="text-xl font-bold text-[#880e4f] mb-3 flex items-center gap-2">
-            <span className="text-2xl">🚀</span> Visión
-          </h3>
-          <p className="text-sm text-gray-600 leading-relaxed italic">
-            "La idea es que, cuando alguien piense en fresas, lo primero que se le venga a la mente sea Fresas de Ags y nuestra marca Dulce Fresa. Queremos crecer, sí, pero sin perder esa esencia de Aguascalientes que nos hizo empezar. Vernos en más lugares, que la gente nos reconozca por ser los que mejor hacen las cosas y, no sé, poner la vara alta en lo que a postres de calidad se refiere."
-          </p>
-        </div>
-      </footer>
-
-      {/* Mecánica de Entregas */}
-      <section id="entregas" className="mt-6 bg-white p-8 rounded-3xl border border-pink-border shadow-sm">
-        <h3 className="text-2xl font-bold text-[#880e4f] mb-6 flex items-center gap-3">
-          <Truck className="w-6 h-6" /> Así manejamos las entregas
-        </h3>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-3">
-            <h4 className="font-bold text-[#c2185b] flex items-center gap-2">
-              <Clock className="w-4 h-4" /> El horario
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Rutas estándar</p>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Repartimos de <span className="font-bold text-[#880e4f]">8:00 am a 4:00 pm</span>.
-                </p>
-              </div>
-              <div className="pt-3 border-t border-pink-100">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-pink-600 mb-1">Envíos personalizados</p>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  ¿Lo necesitas a una hora específica? Enviamos <span className="font-bold text-[#880e4f]">todos los días</span> de <span className="font-bold text-[#880e4f]">7:00 am a 10:00 pm</span> (intervalo de entrega de 1 hora, sujeto a agenda y disponibilidad).
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <h4 className="font-bold text-[#c2185b] flex items-center gap-2">
-              <Star className="w-4 h-4" /> Envíos gratis
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-pink-600 mb-1">🍓 Dulce Fresa</p>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Pide para <span className="font-bold text-[#880e4f]">martes, miércoles o viernes</span>. Mínimo <span className="font-bold text-[#880e4f]">$180</span> y liquidar un día antes.
-                </p>
-              </div>
-              <div className="pt-3 border-t border-pink-100">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-blue-600 mb-1">📦 Fresas AGS</p>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Envío gratis desde <span className="font-bold text-blue-800">1 paquete</span>. Se paga <span className="font-bold text-blue-800">contra entrega</span>.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <h4 className="font-bold text-[#c2185b] flex items-center gap-2">
-              <MapPin className="w-4 h-4" /> La logística
-            </h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Como seguimos una ruta armada para alcanzar a llegar con todos, te caemos en ese transcurso del día. Así nos aseguramos de que todo te llegue bien y a tiempo.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 p-4 bg-pink-light rounded-2xl border border-pink-border/30 text-center">
-          <p className="text-sm text-[#880e4f] font-medium italic">
-            "Básicamente es planearlo un poquito un día antes y listo, te olvidas del costo de envío."
-          </p>
-        </div>
-      </section>
-
-      {/* Product Details Modal */}
-      {selectedProduct && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 animate-in fade-in duration-200"
-          onClick={() => setSelectedProduct(null)}
-        >
-          <div 
-            className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300 flex flex-col md:flex-row"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Image */}
-            <div className="w-full md:w-1/2 h-64 md:h-auto bg-pink-light relative">
-              {selectedProduct.image ? (
-                <img 
-                  src={selectedProduct.image} 
-                  alt={selectedProduct.name} 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-6xl">
-                  {selectedProduct.emoji}
-                </div>
-              )}
-              <button 
-                className="absolute top-4 right-4 md:hidden text-white p-2 bg-black/40 rounded-full"
-                onClick={() => setSelectedProduct(null)}
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="w-full md:w-1/2 p-6 flex flex-col relative">
-              <button 
-                className="hidden md:flex absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition-colors"
-                onClick={() => setSelectedProduct(null)}
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              <div className="mb-4">
-                <span className={`inline-block text-[10px] px-3 py-1 rounded-full font-bold mb-2 ${
-                  selectedProduct.wa === 'dulce' ? 'bg-pink-light text-[#880e4f]' : 'bg-blue-50 text-blue-800'
-                }`}>
-                  {selectedProduct.wa === 'dulce' ? 'Dulce Fresa' : 'Fresas AGS'}
-                </span>
-                <h2 className="text-xl font-bold text-gray-900 leading-tight">
-                  {selectedProduct.name}
-                </h2>
-                <p className="text-xs text-pink-border font-medium mt-1">
-                  Categoría: {selectedProduct.cat}
-                </p>
-              </div>
-
-              <div className="flex-1">
-                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Descripción</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {selectedProduct.desc}
-                </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between">
-                <div className="flex flex-col">
-                  <span className="text-2xl font-bold text-red-price">${selectedProduct.price}</span>
-                  {selectedProduct.oldPrice && (
-                    <span className="text-sm text-gray-400 line-through">${selectedProduct.oldPrice}</span>
-                  )}
-                </div>
-                <button 
-                  onClick={() => {
-                    addToCart(selectedProduct.id);
-                    setSelectedProduct(null);
-                  }}
-                  className="bg-pink-light border border-pink-border text-[#880e4f] rounded-xl px-6 py-3 text-sm font-bold hover:bg-[#f8bbd0] transition-colors shadow-sm"
-                >
-                  Agregar al carrito
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+ 
+       {/* Quienes Somos */}
+       <section id="nosotros" className="mt-12 bg-white p-8 rounded-3xl border border-pink-border shadow-sm overflow-hidden">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+           <div className="order-2 lg:order-1">
+             <h2 className="text-3xl font-bold text-[#880e4f] mb-4">Tu tiempo es nuestro compromiso</h2>
+             <p className="text-gray-600 leading-relaxed mb-8">
+               Desde 2019, somos una pareja de esposos dedicada a llevar lo mejor del mercado hasta tu puerta. 
+               Surgimos como una solución de apoyo en tiempos difíciles y hoy nos hemos consolidado como los 
+               aliados estratégicos de familias y empresas en Aguascalientes.
+             </p>
+ 
+             <div className="space-y-6">
+               <h3 className="text-xl font-bold text-[#c2185b] flex items-center gap-2">
+                 ¿Qué hacemos por ti?
+               </h3>
+               
+               <div className="grid gap-6">
+                 <div className="flex gap-4">
+                   <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
+                     <Clock className="w-5 h-5" />
+                   </div>
+                   <div>
+                     <h4 className="font-bold text-gray-900">Ahorro de tiempo</h4>
+                     <p className="text-sm text-gray-500">Olvídate de las filas y el tráfico; nosotros hacemos el súper por ti.</p>
+                   </div>
+                 </div>
+ 
+                 <div className="flex gap-4">
+                   <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
+                     <Users className="w-5 h-5" />
+                   </div>
+                   <div>
+                     <h4 className="font-bold text-gray-900">Experiencia</h4>
+                     <p className="text-sm text-gray-500">Más de 6 años atendiendo al sector privado y comercial.</p>
+                   </div>
+                 </div>
+ 
+                 <div className="flex gap-4">
+                   <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
+                     <ShieldCheck className="w-5 h-5" />
+                   </div>
+                   <div>
+                     <h4 className="font-bold text-gray-900">Confianza</h4>
+                     <p className="text-sm text-gray-500">Calidad seleccionada personalmente, como si fuera para nuestra propia casa.</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+ 
+             <div className="mt-10 p-6 bg-[#fce4ec] rounded-2xl border-l-4 border-[#880e4f]">
+               <p className="text-lg font-bold text-[#880e4f] italic">
+                 "Nacimos para cuidarte, crecimos para servirte"
+               </p>
+             </div>
+           </div>
+ 
+           <div className="order-1 lg:order-2">
+             <div className="relative">
+               <div className="absolute -inset-4 bg-pink-light rounded-[2rem] -rotate-2 z-0"></div>
+               <img 
+                 src="https://i.postimg.cc/HWb7sMkS/Whats-App-Image-2026-04-12-at-12-13-00.jpg" 
+                 alt="Nosotros" 
+                 className="relative z-10 w-full h-auto rounded-3xl shadow-xl object-cover aspect-[4/5]"
+                 referrerPolicy="no-referrer"
+               />
+               <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-lg z-20 flex items-center gap-2">
+                 <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+                 <span className="font-bold text-gray-900">Desde 2019</span>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+ 
+       {/* Misión y Visión */}
+       <footer className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-pink-border pt-10 pb-10">
+         <div className="bg-white p-6 rounded-3xl border border-pink-border shadow-sm">
+           <h3 className="text-xl font-bold text-[#880e4f] mb-3 flex items-center gap-2">
+             <span className="text-2xl">🎯</span> Misión
+           </h3>
+           <p className="text-sm text-gray-600 leading-relaxed italic">
+             "Mira, lo que buscamos en Fresas de Ags es bien simple pero bien cuidado: llevarle a la gente las mejores fresas, las de aquí, las de Aguascalientes. Queremos que cuando prueben algo de Dulce Fresa sientan que no es cualquier postre, ¿sabes? Es frescura de verdad, seleccionada a mano... con ese toque artesanal y un trato que te haga sentir en confianza, como en casa."
+           </p>
+         </div>
+         <div className="bg-white p-6 rounded-3xl border border-pink-border shadow-sm">
+           <h3 className="text-xl font-bold text-[#880e4f] mb-3 flex items-center gap-2">
+             <span className="text-2xl">🚀</span> Visión
+           </h3>
+           <p className="text-sm text-gray-600 leading-relaxed italic">
+             "La idea es que, cuando alguien piense en fresas, lo primero que se le venga a la mente sea Fresas de Ags y nuestra marca Dulce Fresa. Queremos crecer, sí, pero sin perder esa esencia de Aguascalientes que nos hizo empezar. Vernos en más lugares, que la gente nos reconozca por ser los que mejor hacen las cosas y, no sé, poner la vara alta en lo que a postres de calidad se refiere."
+           </p>
+         </div>
+       </footer>
+ 
+       {/* Mecánica de Entregas */}
+       <section id="entregas" className="mt-6 bg-white p-8 rounded-3xl border border-pink-border shadow-sm">
+         <h3 className="text-2xl font-bold text-[#880e4f] mb-6 flex items-center gap-3">
+           <Truck className="w-6 h-6" /> Así manejamos las entregas
+         </h3>
+         
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+           <div className="space-y-3">
+             <h4 className="font-bold text-[#c2185b] flex items-center gap-2">
+               <Clock className="w-4 h-4" /> El horario
+             </h4>
+             <div className="space-y-4">
+               <div>
+                 <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Rutas estándar</p>
+                 <p className="text-sm text-gray-600 leading-relaxed">
+                   Repartimos de <span className="font-bold text-[#880e4f]">8:00 am a 4:00 pm</span>.
+                 </p>
+               </div>
+               <div className="pt-3 border-t border-pink-100">
+                 <p className="text-[10px] font-bold uppercase tracking-wider text-pink-600 mb-1">Envíos personalizados</p>
+                 <p className="text-sm text-gray-600 leading-relaxed">
+                   ¿Lo necesitas a una hora específica? Enviamos <span className="font-bold text-[#880e4f]">todos los días</span> de <span className="font-bold text-[#880e4f]">7:00 am a 10:00 pm</span> (intervalo de entrega de 1 hora, sujeto a agenda y disponibilidad).
+                 </p>
+               </div>
+             </div>
+           </div>
+ 
+           <div className="space-y-3">
+             <h4 className="font-bold text-[#c2185b] flex items-center gap-2">
+               <Star className="w-4 h-4" /> Envíos gratis
+             </h4>
+             <div className="space-y-4">
+               <div>
+                 <p className="text-[10px] font-bold uppercase tracking-wider text-pink-600 mb-1">🍓 Dulce Fresa</p>
+                 <p className="text-sm text-gray-600 leading-relaxed">
+                   Pide para <span className="font-bold text-[#880e4f]">martes, miércoles o viernes</span>. Mínimo <span className="font-bold text-[#880e4f]">$180</span> y liquidar un día antes.
+                 </p>
+               </div>
+               <div className="pt-3 border-t border-pink-100">
+                 <p className="text-[10px] font-bold uppercase tracking-wider text-blue-600 mb-1">📦 Fresas AGS</p>
+                 <p className="text-sm text-gray-600 leading-relaxed">
+                   Envío gratis desde <span className="font-bold text-blue-800">1 paquete</span>. Se paga <span className="font-bold text-blue-800">contra entrega</span>.
+                 </p>
+               </div>
+             </div>
+           </div>
+ 
+           <div className="space-y-3">
+             <h4 className="font-bold text-[#c2185b] flex items-center gap-2">
+               <MapPin className="w-4 h-4" /> La logística
+             </h4>
+             <p className="text-sm text-gray-600 leading-relaxed">
+               Como seguimos una ruta armada para alcanzar a llegar con todos, te caemos en ese transcurso del día. Así nos aseguramos de que todo te llegue bien y a tiempo.
+             </p>
+           </div>
+         </div>
+ 
+         <div className="mt-8 p-4 bg-pink-light rounded-2xl border border-pink-border/30 text-center">
+           <p className="text-sm text-[#880e4f] font-medium italic">
+             "Básicamente es planearlo un poquito un día antes y listo, te olvidas del costo de envío."
+           </p>
+         </div>
+       </section>
+ 
+       {/* Product Details Modal */}
+       {selectedProduct && (
+         <div 
+           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 animate-in fade-in duration-200"
+           onClick={() => setSelectedProduct(null)}
+         >
+           <div 
+             className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300 flex flex-col md:flex-row"
+             onClick={(e) => e.stopPropagation()}
+           >
+             {/* Modal Image */}
+             <div className="w-full md:w-1/2 h-64 md:h-auto bg-pink-light relative">
+               {selectedProduct.image ? (
+                 <img 
+                   src={selectedProduct.image} 
+                   alt={selectedProduct.name} 
+                   className="w-full h-full object-cover"
+                   referrerPolicy="no-referrer"
+                 />
+               ) : (
+                 <div className="w-full h-full flex items-center justify-center text-6xl">
+                   {selectedProduct.emoji}
+                 </div>
+               )}
+               <button 
+                 className="absolute top-4 right-4 md:hidden text-white p-2 bg-black/40 rounded-full"
+                 onClick={() => setSelectedProduct(null)}
+               >
+                 <X className="w-6 h-6" />
+               </button>
+             </div>
+ 
+             {/* Modal Content */}
+             <div className="w-full md:w-1/2 p-6 flex flex-col relative">
+               <button 
+                 className="hidden md:flex absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                 onClick={() => setSelectedProduct(null)}
+               >
+                 <X className="w-6 h-6" />
+               </button>
+ 
+               <div className="mb-4">
+                 <span className={`inline-block text-[10px] px-3 py-1 rounded-full font-bold mb-2 ${
+                   selectedProduct.wa === 'dulce' ? 'bg-pink-light text-[#880e4f]' : 'bg-blue-50 text-blue-800'
+                 }`}>
+                   {selectedProduct.wa === 'dulce' ? 'Dulce Fresa' : 'Fresas AGS'}
+                 </span>
+                 <h2 className="text-xl font-bold text-gray-900 leading-tight">
+                   {selectedProduct.name}
+                 </h2>
+                 <p className="text-xs text-pink-border font-medium mt-1">
+                   Categoría: {selectedProduct.cat}
+                 </p>
+               </div>
+ 
+               <div className="flex-1">
+                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Descripción</h3>
+                 <p className="text-sm text-gray-600 leading-relaxed">
+                   {selectedProduct.desc}
+                 </p>
+               </div>
+ 
+               <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between">
+                 <div className="flex flex-col">
+                   <span className="text-2xl font-bold text-red-price">${selectedProduct.price}</span>
+                   {selectedProduct.oldPrice && (
+                     <span className="text-sm text-gray-400 line-through">${selectedProduct.oldPrice}</span>
+                   )}
+                 </div>
+                 <button 
+                   onClick={() => {
+                     addToCart(selectedProduct.id);
+                     setSelectedProduct(null);
+                   }}
+                   className="bg-pink-light border border-pink-border text-[#880e4f] rounded-xl px-6 py-3 text-sm font-bold hover:bg-[#f8bbd0] transition-colors shadow-sm"
+                 >
+                   Agregar al carrito
+                 </button>
+               </div>
+             </div>
+           </div>
+         </div>
+       )}
+     </div>
+   );
+ }
