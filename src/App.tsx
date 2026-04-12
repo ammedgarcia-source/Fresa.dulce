@@ -26,7 +26,7 @@ const PRODUCTS = [
   {id:15, name:'Docena flores', desc:'Ramo de 12 flores.', price:450, oldPrice:null, emoji:'💐', image: 'https://i.postimg.cc/d7BQMGKV/image.jpg', cat:'Flores', wa:'dulce'},
   {id:16, name:'Paquete berry fresco', desc:'Fresa + blueberry + zarzamora + frambuesa.', price:290, oldPrice:null, emoji:'🫐', image: 'https://i.postimg.cc/tTwHrXn3/Gemini_Generated_Image_nn34utnn34utnn34.png', cat:'Fruta fresca', wa:'fresas'},
   {id:17, name:'Paquete 2kg fresa congelada', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/6qZxgDCj/Gemini_Generated_Image_eqrj7eeqrj7eeqrj.png', cat:'Fruta congelada', wa:'fresas'},
-  {id:18, name:'Paquete mango congelado 2kg', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🥭', image: 'https://i.postimg.cc/76Dz5kZn/Gemini-Generated-Image-5snkhi5snkhi5snk-(1).png', cat:'Fruta congelada', wa:'fresas'},
+  {id:18, name:'Paquete mango congelado 2kg', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🥭', image: 'https://i.postimg.cc/76Dz5kZn/Gemini-Generated-Image_5snkhi5snkhi5snk-(1).png', cat:'Fruta congelada', wa:'fresas'},
   {id:19, name:'Paquete fresa mango', desc:'1kg fresa + 1kg mango.', price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/cC3G2VfD/Gemini_Generated_Image_7f18ag7f18ag7f18.png', cat:'Fruta congelada', wa:'fresas'},
   {id:20, name:'Paquete mix congelado 2kg', desc:'2kg de mix de berries.', price:230, oldPrice:null, emoji:'🫐', image: 'https://i.postimg.cc/gXBqcXP8/image.jpg', cat:'Fruta congelada', wa:'fresas'},
   {id:21, name:'Paquete berry congelado', desc:'Mix de 2kg congelado.', price:250, oldPrice:null, emoji:'❄️', image: 'https://i.postimg.cc/76dyBxJd/Gemini_Generated_Image_hf2nzkhf2nzkhf2n.png', cat:'Fruta congelada', wa:'fresas'},
@@ -98,61 +98,25 @@ export default function App() {
           </div>
           <div className="space-y-4">
             <div className="rounded-2xl aspect-square shadow-2xl transform rotate-3 overflow-hidden"><img src="https://i.postimg.cc/RhWZFsKG/images-(3).jpg" className="w-full h-full object-cover" referrerPolicy="no-referrer" /></div>
-            <div className="rounded-2xl aspect-square shadow-2xl transform -rotate-2 overflow-hidden"><img src="https://i.postimg.cc/cC3G2VD/Gemini_Generated_Image_7f18ag7f18ag7f18.png" className="w-full h-full object-cover" referrerPolicy="no-referrer" /></div>
+            <div className="rounded-2xl aspect-square shadow-2xl transform -rotate-2 overflow-hidden"><img src="https://i.postimg.cc/cC3G2VfD/Gemini_Generated_Image_7f18ag7f18ag7f18.png" className="w-full h-full object-cover" referrerPolicy="no-referrer" /></div>
           </div>
         </div>
       </section>
 
-      {/* SECCIÓN DE LOGOS - VERSIÓN ULTRA COMPATIBLE */}
+      {/* SECCIÓN DE LOGOS - MANTENIENDO LO QUE YA FUNCIONABA */}
       <header className="bg-pink-light rounded-2xl p-6 mb-6 border border-pink-border shadow-sm flex flex-col items-center gap-6">
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-          {/* Logo Dulce Fresa */}
-          <img 
-            style={{ height: '160px', width: 'auto', display: 'block' }}
-            src="https://i.postimg.cc/vxgQwNrv/2.gif?v=1" 
-            alt="Dulce Fresa" 
-            referrerPolicy="no-referrer"
-          />
+          <img className="h-40 md:h-48 w-auto object-contain" src="https://i.postimg.cc/vxgQwNrv/2.gif" alt="Dulce Fresa" referrerPolicy="no-referrer" />
           <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
-          {/* Logo Fresas AGS */}
-          <img 
-            style={{ height: '120px', width: 'auto', display: 'block' }}
-            src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO.png?v=1" 
-            alt="Fresas AGS" 
-            referrerPolicy="no-referrer"
-          />
+          <img className="h-28 md:h-32 w-auto object-contain" src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO(1).png" alt="Fresas AGS" referrerPolicy="no-referrer" />
           <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
-          {/* Logo Hecho en AGS */}
-          <img 
-            style={{ height: '140px', width: 'auto', display: 'block' }}
-            src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png?v=1" 
-            alt="Hecho en AGS" 
-            referrerPolicy="no-referrer"
-          />
+          <img className="h-32 md:h-40 w-auto object-contain" src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png" alt="Hecho en AGS" referrerPolicy="no-referrer" />
         </div>
         <div className="text-center">
           <p className="text-base md:text-lg font-bold text-[#880e4f] mb-1">Fresas y productos artesanales</p>
           <span className="inline-flex items-center gap-1.5 bg-[#f8bbd0] text-[#880e4f] text-sm px-4 py-1.5 rounded-full font-bold shadow-sm"><MapPin className="w-4 h-4" /> Aguascalientes, AGS</span>
         </div>
       </header>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
-          <h3 className="text-sm font-bold text-green-800">🍓 Dulce Fresa — Arreglos y postres</h3>
-          <div className="flex flex-wrap gap-2 mt-2">
-            <a href={`https://wa.me/${WA_DULCE}`} target="_blank" className="bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><WhatsAppIcon className="w-4 h-4 fill-white" /> WhatsApp</a>
-            <a href="https://www.facebook.com/Dulce.Fresa.Ags/followers" target="_blank" className="bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a>
-            <a href="https://www.instagram.com/dulce.fresa.deli/" target="_blank" className="bg-[#E4405F] text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a>
-          </div>
-        </div>
-        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
-          <h3 className="text-sm font-bold text-green-800">🍌 Fresas de AGS — Fruta y congelados</h3>
-          <div className="flex flex-wrap gap-2 mt-2">
-            <a href={`https://wa.me/${WA_FRESAS}`} target="_blank" className="bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><WhatsAppIcon className="w-4 h-4 fill-white" /> WhatsApp</a>
-            <a href="https://www.facebook.com/fresas.para.todos" target="_blank" className="bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a>
-          </div>
-        </div>
-      </div>
 
       <div id="productos" className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
         <section>
