@@ -26,7 +26,7 @@ const PRODUCTS = [
   {id:15, name:'Docena flores', desc:'Ramo de 12 flores.', price:450, oldPrice:null, emoji:'💐', image: 'https://i.postimg.cc/d7BQMGKV/image.jpg', cat:'Flores', wa:'dulce'},
   {id:16, name:'Paquete berry fresco', desc:'Fresa + blueberry + zarzamora + frambuesa.', price:290, oldPrice:null, emoji:'🫐', image: 'https://i.postimg.cc/tTwHrXn3/Gemini_Generated_Image_nn34utnn34utnn34.png', cat:'Fruta fresca', wa:'fresas'},
   {id:17, name:'Paquete 2kg fresa congelada', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/6qZxgDCj/Gemini_Generated_Image_eqrj7eeqrj7eeqrj.png', cat:'Fruta congelada', wa:'fresas'},
-  {id:18, name:'Paquete mango congelado 2kg', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🥭', image: 'https://i.postimg.cc/76Dz5kZn/Gemini-Generated-Image_5snkhi5snkhi5snk-(1).png', cat:'Fruta congelada', wa:'fresas'},
+  {id:18, name:'Paquete mango congelado 2kg', desc:'2 bolsas de 1kg.', price:220, oldPrice:null, emoji:'🥭', image: 'https://i.postimg.cc/76Dz5kZn/Gemini-Generated-Image-5snkhi5snkhi5snk-(1).png', cat:'Fruta congelada', wa:'fresas'},
   {id:19, name:'Paquete fresa mango', desc:'1kg fresa + 1kg mango.', price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/cC3G2VD/Gemini_Generated_Image_7f18ag7f18ag7f18.png', cat:'Fruta congelada', wa:'fresas'},
   {id:20, name:'Paquete mix congelado 2kg', desc:'2kg de mix de berries.', price:230, oldPrice:null, emoji:'🫐', image: 'https://i.postimg.cc/gXBqcXP8/image.jpg', cat:'Fruta congelada', wa:'fresas'},
   {id:21, name:'Paquete berry congelado', desc:'Mix de 2kg congelado.', price:250, oldPrice:null, emoji:'❄️', image: 'https://i.postimg.cc/76dyBxJd/Gemini_Generated_Image_hf2nzkhf2nzkhf2n.png', cat:'Fruta congelada', wa:'fresas'},
@@ -103,34 +103,31 @@ export default function App() {
         </div>
       </section>
 
-      {/* SECCIÓN DE LOGOS - CORREGIDA */}
+      {/* SECCIÓN DE LOGOS - VERSIÓN ULTRA COMPATIBLE */}
       <header className="bg-pink-light rounded-2xl p-6 mb-6 border border-pink-border shadow-sm flex flex-col items-center gap-6">
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
           {/* Logo Dulce Fresa */}
           <img 
-            className="h-40 md:h-48 w-auto object-contain" 
-            src="https://i.postimg.cc/vxgQwNrv/2.gif" 
+            style={{ height: '160px', width: 'auto', display: 'block' }}
+            src="https://i.postimg.cc/vxgQwNrv/2.gif?v=1" 
             alt="Dulce Fresa" 
             referrerPolicy="no-referrer"
-            onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/200x200?text=Dulce+Fresa'; }}
           />
           <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
           {/* Logo Fresas AGS */}
           <img 
-            className="h-28 md:h-32 w-auto object-contain" 
-            src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO.png" 
+            style={{ height: '120px', width: 'auto', display: 'block' }}
+            src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO.png?v=1" 
             alt="Fresas AGS" 
             referrerPolicy="no-referrer"
-            onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/200x200?text=Fresas+AGS'; }}
           />
           <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
           {/* Logo Hecho en AGS */}
           <img 
-            className="h-32 md:h-40 w-auto object-contain" 
-            src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png" 
+            style={{ height: '140px', width: 'auto', display: 'block' }}
+            src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png?v=1" 
             alt="Hecho en AGS" 
             referrerPolicy="no-referrer"
-            onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/200x200?text=Hecho+en+AGS'; }}
           />
         </div>
         <div className="text-center">
@@ -139,7 +136,24 @@ export default function App() {
         </div>
       </header>
 
-      {/* ... resto del código ... */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
+          <h3 className="text-sm font-bold text-green-800">🍓 Dulce Fresa — Arreglos y postres</h3>
+          <div className="flex flex-wrap gap-2 mt-2">
+            <a href={`https://wa.me/${WA_DULCE}`} target="_blank" className="bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><WhatsAppIcon className="w-4 h-4 fill-white" /> WhatsApp</a>
+            <a href="https://www.facebook.com/Dulce.Fresa.Ags/followers" target="_blank" className="bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a>
+            <a href="https://www.instagram.com/dulce.fresa.deli/" target="_blank" className="bg-[#E4405F] text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><Instagram className="w-4 h-4" /> Instagram</a>
+          </div>
+        </div>
+        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
+          <h3 className="text-sm font-bold text-green-800">🍌 Fresas de AGS — Fruta y congelados</h3>
+          <div className="flex flex-wrap gap-2 mt-2">
+            <a href={`https://wa.me/${WA_FRESAS}`} target="_blank" className="bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><WhatsAppIcon className="w-4 h-4 fill-white" /> WhatsApp</a>
+            <a href="https://www.facebook.com/fresas.para.todos" target="_blank" className="bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold flex items-center gap-2"><Facebook className="w-4 h-4" /> Facebook</a>
+          </div>
+        </div>
+      </div>
+
       <div id="productos" className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
         <section>
           <div className="flex gap-2 mb-4 overflow-x-auto pb-2 no-scrollbar">
@@ -193,7 +207,69 @@ export default function App() {
         </aside>
       </div>
 
-      {/* ... (el resto del código de Nosotros, Entregas y Modal se mantiene igual) ... */}
+      {cartItems.length > 0 && (
+        <div className="lg:hidden fixed bottom-6 right-6 z-50">
+          <button onClick={() => setIsCartMobileOpen(true)} className="bg-[#880e4f] text-white p-4 rounded-full shadow-2xl flex items-center gap-3"><ShoppingCart className="w-6 h-6" /><span className="font-bold text-sm">${total}</span></button>
+        </div>
+      )}
+
+      {isCartMobileOpen && (
+        <div className="lg:hidden fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-end" onClick={() => setIsCartMobileOpen(false)}>
+          <div className="bg-white rounded-t-[2.5rem] p-6 w-full max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-between mb-6"><h2 className="text-xl font-black">Tu Pedido</h2><button onClick={() => setIsCartMobileOpen(false)}><X className="w-6 h-6" /></button></div>
+            <div className="space-y-4 mb-6">
+              {cartItems.map(item => (
+                <div key={item.id} className="flex items-center gap-4 p-3 bg-gray-50 rounded-2xl">
+                  <div className="w-14 h-14 bg-white rounded-xl overflow-hidden shrink-0">{item.image ? <img src={item.image} className="w-full h-full object-cover" referrerPolicy="no-referrer" /> : item.emoji}</div>
+                  <div className="flex-1"><h5 className="text-sm font-bold">{item.name}</h5><span className="text-xs text-red-price font-black">${item.subtotal}</span></div>
+                  <div className="flex items-center gap-3 bg-white rounded-xl p-2"><button onClick={() => changeQty(item.id, -1)}><Minus className="w-4 h-4" /></button><span className="font-black">{item.qty}</span><button onClick={() => changeQty(item.id, 1)}><Plus className="w-4 h-4" /></button></div>
+                </div>
+              ))}
+            </div>
+            <div className="border-t pt-6"><div className="flex justify-between mb-6"><span className="font-bold">Total</span><span className="text-2xl font-black text-[#880e4f]">${total} MXN</span></div>
+              <div className="grid gap-3">
+                {hasDulce && <button onClick={() => sendWA('dulce')} className="w-full bg-green-wa text-white rounded-2xl py-4 font-black">Pedir Dulce Fresa</button>}
+                {hasFresas && <button onClick={() => sendWA('fresas')} className="w-full bg-blue-600 text-white rounded-2xl py-4 font-black">Pedir Fresas AGS</button>}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <section id="nosotros" className="mt-12 bg-white p-8 rounded-3xl border border-pink-border shadow-sm grid lg:grid-cols-2 gap-10 items-center">
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold text-[#880e4f]">Tu tiempo es nuestro compromiso</h2>
+          <p className="text-gray-600">Desde 2019, somos una pareja de esposos dedicada a llevar lo mejor del mercado hasta tu puerta en Aguascalientes.</p>
+          <div className="grid gap-6">
+            <div className="flex gap-4"><Clock className="w-5 h-5 text-[#880e4f]" /><div><h4 className="font-bold">Ahorro de tiempo</h4><p className="text-sm text-gray-500">Nosotros hacemos el súper por ti.</p></div></div>
+            <div className="flex gap-4"><Users className="w-5 h-5 text-[#880e4f]" /><div><h4 className="font-bold">Experiencia</h4><p className="text-sm text-gray-500">Más de 6 años atendiendo al sector comercial.</p></div></div>
+          </div>
+          <div className="p-6 bg-[#fce4ec] rounded-2xl border-l-4 border-[#880e4f] font-bold italic text-[#880e4f]">"Nacimos para cuidarte, crecimos para servirte"</div>
+        </div>
+        <div className="relative"><img src="https://i.postimg.cc/HWb7sMkS/Whats-App-Image-2026-04-12-at-12-13-00.jpg" className="w-full rounded-3xl shadow-xl" referrerPolicy="no-referrer" /><div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-lg font-bold flex items-center gap-2"><Heart className="w-5 h-5 text-red-500 fill-red-500" /> Desde 2019</div></div>
+      </section>
+
+      <section id="entregas" className="mt-6 bg-white p-8 rounded-3xl border border-pink-border shadow-sm">
+        <h3 className="text-2xl font-bold text-[#880e4f] mb-6 flex items-center gap-3"><Truck className="w-6 h-6" /> Entregas</h3>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="space-y-3"><h4 className="font-bold text-[#c2185b]">Horarios</h4><p className="text-sm text-gray-600">Rutas estándar: 8am-4pm. Personalizados: 7am-10pm (intervalo 1h).</p></div>
+          <div className="space-y-3"><h4 className="font-bold text-[#c2185b]">Envíos Gratis</h4><p className="text-sm text-gray-600">Dulce Fresa: Martes/Miércoles/Viernes (min $180). Fresas AGS: Desde 1 paquete.</p></div>
+          <div className="space-y-3"><h4 className="font-bold text-[#c2185b]">Logística</h4><p className="text-sm text-gray-600">Seguimos una ruta armada para llegar con todos a tiempo.</p></div>
+        </div>
+      </section>
+
+      {selectedProduct && (
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setSelectedProduct(null)}>
+          <div className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row" onClick={e => e.stopPropagation()}>
+            <div className="w-full md:w-1/2 h-64 md:h-auto bg-pink-light">{selectedProduct.image ? <img src={selectedProduct.image} className="w-full h-full object-cover" referrerPolicy="no-referrer" /> : <div className="w-full h-full flex items-center justify-center text-6xl">{selectedProduct.emoji}</div>}</div>
+            <div className="w-full md:w-1/2 p-6 flex flex-col"><button className="absolute top-4 right-4 text-gray-400" onClick={() => setSelectedProduct(null)}><X className="w-6 h-6" /></button>
+              <h2 className="text-xl font-bold mb-2">{selectedProduct.name}</h2>
+              <p className="text-sm text-gray-600 flex-1">{selectedProduct.desc}</p>
+              <div className="mt-8 pt-6 border-t flex items-center justify-between"><span className="text-2xl font-bold text-red-price">${selectedProduct.price}</span><button onClick={() => { addToCart(selectedProduct.id); setSelectedProduct(null); }} className="bg-pink-light border border-pink-border text-[#880e4f] rounded-xl px-6 py-3 font-bold">Agregar</button></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
