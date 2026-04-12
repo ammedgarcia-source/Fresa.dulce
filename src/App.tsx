@@ -1,24 +1,27 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   MapPin, 
   ShoppingCart, 
   Plus, 
   Minus, 
   Trash2, 
-  ExternalLink,
+  ExternalLink, 
   X,
   Truck,
   Clock,
-  Star
+  Star,
+  Facebook,
+  Instagram,
+  Music2,
+  Users,
+  Heart,
+  ShieldCheck,
+  ArrowRight,
+  Home
 } from 'lucide-react';
 
 const WA_DULCE = '524494939383';
-const WA_FRESAS = '524493897519';
+const WA_FRESAS = '524491063636';
 
 const PRODUCTS = [
   // DULCE FRESA — Especialidades
@@ -26,11 +29,11 @@ const PRODUCTS = [
   {id:2,  name:'Vaso fresa con crema premium 500ml',        desc:'Fresas de primera calidad con crema de la casa, esponjosa y deliciosa.',                               price:120, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/rz1wk6C8/image.jpg', cat:'Especialidades', wa:'dulce'},
   {id:26, name:'Vaso fresa con crema premium 1 litro/33oz', desc:'Fresas de primera calidad con crema de la casa esponjosa y deliciosa, la mejor que probaras.',         price:220, oldPrice:null, emoji:'🍓', image: 'https://i.postimg.cc/6TrpXsLQ/image.jpg', cat:'Especialidades', wa:'dulce'},
   // DULCE FRESA — Arreglos
-  {id:3,  name:'Cajita 6 fresas con chocolate',             desc:'6 fresas cubiertas de chocolate con malvaviscos y decoración.',                                        price:130, oldPrice:null, emoji:'🍫', image: 'https://i.postimg.cc/5XnJtb69/image.jpg', cat:'Arreglos', wa:'dulce'},
+  {id:3,  name:'Cajita 6 fresas con chocolate',             desc:'6 fresas cubiertas de chocolate con malvaviscos y decoración.',                                        price:130, oldPrice:null, emoji:'🍫', image: 'https://i.postimg.cc/vmdZ3myn/IMG_20260409_WA0011.jpg', cat:'Arreglos', wa:'dulce'},
   {id:4,  name:'Cajita 9 fresas con chocolate',             desc:'9 fresas cubiertas de chocolate con malvaviscos y chochitos de colores.',                              price:180, oldPrice:null, emoji:'🍫', image: 'https://i.postimg.cc/2qwjpnfv/image.jpg', cat:'Arreglos', wa:'dulce'},
   {id:5,  name:'Cajita 12 fresas con chocolate',            desc:'12 fresas cubiertas de chocolate con malvaviscos y decoración.',                                       price:220, oldPrice:null, emoji:'🍫', image: 'https://i.postimg.cc/xkRjrLS8/image.jpg', cat:'Arreglos', wa:'dulce'},
   {id:7,  name:'Corazón metal',                             desc:'Cajita metal de 8-9 fresas cubiertas de chocolate.',                                                   price:350, oldPrice:null, emoji:'🖤', image: 'https://i.postimg.cc/LqT4djMq/image.jpg', cat:'Arreglos', wa:'dulce'},
-  {id:6,  name:'Corazón ventana charola',                   desc:'Charola de plástico con ventana de tapa, 12-13 fresas decoradas.',                                    price:399, oldPrice:null, emoji:'❤️', image: 'https://i.postimg.cc/B8gZW2GH/image.jpg', cat:'Arreglos', wa:'dulce'},
+  {id:6,  name:'Corazón ventana charola',                   desc:'Charola de plástico con ventana de tapa, 12-13 fresas decoradas.',                                    price:399, oldPrice:null, emoji:'❤️', image: 'https://i.postimg.cc/9M3D7B88/Whats_App_Image_2026_04_09_at_9_42_19_PM.jpg', cat:'Arreglos', wa:'dulce'},
   {id:9,  name:'Madera pequeña',                            desc:'Arreglo en caja de madera con fresas cubiertas y vino.',                                               price:420, oldPrice:null, emoji:'🍷', image: 'https://i.postimg.cc/R3RCrwzn/image.jpg', cat:'Arreglos', wa:'dulce'},
   {id:10, name:'Baúl madera 16 pzas fresa',                 desc:'Baúl de madera que contiene 16 piezas de fresas cubiertas.',                                          price:480, oldPrice:null, emoji:'🎁', image: 'https://i.postimg.cc/gwDc93Pp/image.jpg', cat:'Arreglos', wa:'dulce'},
   {id:8,  name:'Corazón chocolate sorpresa',                desc:'Caparazón de chocolate sorpresa con mensaje personalizado dentro.',                                    price:550, oldPrice:null, emoji:'💝', image: 'https://i.postimg.cc/mcwZx7G1/image.jpg', cat:'Arreglos', wa:'dulce'},
@@ -69,6 +72,7 @@ export default function App() {
   const [cart, setCart] = useState<Record<number, number>>({});
   const [activeCat, setActiveCat] = useState('Todos');
   const [selectedProduct, setSelectedProduct] = useState<typeof PRODUCTS[0] | null>(null);
+  const [isCartMobileOpen, setIsCartMobileOpen] = useState(false);
 
   const filteredProducts = useMemo(() => {
     return activeCat === 'Todos' ? PRODUCTS : PRODUCTS.filter(p => p.cat === activeCat);
@@ -122,80 +126,149 @@ export default function App() {
 
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-6">
-      {/* Hero Section */}
-      <header className="bg-pink-light rounded-2xl p-6 mb-6 border border-pink-border shadow-sm">
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-            <img 
-              className="h-40 md:h-48 w-auto object-contain" 
-              src="https://i.postimg.cc/vxgQwNrv/2.gif" 
-              alt="Dulce Fresa"
-              referrerPolicy="no-referrer"
-            />
-            <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
-            <img 
-              className="h-28 md:h-32 w-auto object-contain" 
-              src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO(1).png" 
-              alt="Fresas AGS"
-              referrerPolicy="no-referrer"
-            />
-            <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
-            <img 
-              className="h-32 md:h-40 w-auto object-contain" 
-              src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png" 
-              alt="Hecho en AGS"
-              referrerPolicy="no-referrer"
-            />
+      {/* Sticky Navigation Menu */}
+      <nav className="sticky top-4 z-40 mb-6 bg-white/80 backdrop-blur-md border border-pink-border/30 rounded-2xl p-2 shadow-lg">
+        <div className="flex items-center justify-around md:justify-center md:gap-12">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-[#880e4f] hover:scale-105 transition-transform"
+          >
+            <Home className="w-4 h-4" />
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider">Inicio</span>
+          </button>
+          <button 
+            onClick={() => document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-[#880e4f] hover:scale-105 transition-transform"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider">Productos</span>
+          </button>
+          <button 
+            onClick={() => document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-[#880e4f] hover:scale-105 transition-transform"
+          >
+            <Users className="w-4 h-4" />
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider">Nosotros</span>
+          </button>
+          <button 
+            onClick={() => document.getElementById('entregas')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-[#880e4f] hover:scale-105 transition-transform"
+          >
+            <Truck className="w-4 h-4" />
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider">Entregas</span>
+          </button>
+        </div>
+      </nav>
+
+      {/* Visual Introduction / Hero Section */}
+      <section className="mb-12 relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#880e4f] to-[#c2185b] text-white">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        </div>
+        
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 md:p-12 items-center">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold border border-white/30">
+              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              <span>Calidad Premium desde 2019</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tighter">
+              Frescura que <br />
+              <span className="text-pink-200 underline decoration-pink-400/50">enamora</span> tu paladar
+            </h1>
+            <p className="text-lg text-pink-50 leading-relaxed max-w-md">
+              Llevamos lo mejor de Aguascalientes directo a tu puerta. Postres artesanales, arreglos inolvidables y la fruta más fresca.
+            </p>
+            <div className="flex flex-wrap gap-4 pt-4">
+              <button 
+                onClick={() => document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white text-[#880e4f] px-8 py-4 rounded-2xl font-black flex items-center gap-2 hover:scale-105 transition-transform shadow-xl"
+              >
+                Ver Catálogo <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
-          
-          <div className="text-center">
-            <p className="text-base md:text-lg font-bold text-[#880e4f] mb-1">Fresas y productos artesanales</p>
-            <span className="inline-flex items-center gap-1.5 bg-[#f8bbd0] text-[#880e4f] text-sm px-4 py-1.5 rounded-full font-bold shadow-sm">
-              <MapPin className="w-4 h-4" />
-              Aguascalientes, AGS
-            </span>
+
+          <div className="grid grid-cols-2 gap-4 relative">
+            {/* Floating Images Grid */}
+            <div className="space-y-4 pt-8">
+              <div className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-500">
+                <img src="https://i.postimg.cc/F1yH4tgs/image.jpg" className="w-full h-full object-cover" alt="Fresas con crema" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <p className="text-xs font-bold">Especialidades</p>
+                </div>
+              </div>
+              <div className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500">
+                <img src="https://i.postimg.cc/vmdZ3myn/IMG_20260409_WA0011.jpg" className="w-full h-full object-cover" alt="Fresas con chocolate" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <p className="text-xs font-bold">Arreglos</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500">
+                <img src="https://i.postimg.cc/RhWZFsKG/images-(3).jpg" className="w-full h-full object-cover" alt="Rosas" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <p className="text-xs font-bold">Flores</p>
+                </div>
+              </div>
+              <div className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform -rotate-2 hover:rotate-0 transition-all duration-500">
+                <img src="https://i.postimg.cc/gXBqcXP8/image.jpg" className="w-full h-full object-cover" alt="Fruta" referrerPolicy="no-referrer" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <p className="text-xs font-bold">Fruta Congelada</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <header className="flex flex-col items-center mb-10">
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 mb-6">
+          <img src="https://i.postimg.cc/fWf59n4v/image.jpg" alt="Dulce Fresa Logo" className="h-20 md:h-28 w-auto object-contain" referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/3R91f93Z/image.jpg" alt="Fresas AGS Logo" className="h-20 md:h-28 w-auto object-contain" referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/0jWj6m9Z/image.jpg" alt="Hecho en AGS Logo" className="h-24 md:h-32 w-auto object-contain" referrerPolicy="no-referrer" />
+        </div>
+        <div className="text-center">
+          <p className="text-gray-text font-bold text-sm md:text-base uppercase tracking-widest mb-1">Fresas y productos artesanales</p>
+          <div className="flex items-center justify-center gap-2 text-pink font-bold">
+            <MapPin className="w-4 h-4" />
+            <span>Aguascalientes, AGS</span>
           </div>
         </div>
       </header>
 
-      {/* WhatsApp Banners */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
-          <h3 className="text-sm font-bold text-green-800 flex items-center gap-2">
-            🍓 Dulce Fresa — Arreglos y postres
-          </h3>
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Fresas con chocolate, arreglos, flores y vasos con crema
-          </p>
-          <a 
-            href={`https://wa.me/${WA_DULCE}?text=${encodeURIComponent('¡Hola! Me gustaría pedir de Dulce Fresa 🍓')}`}
-            target="_blank"
-            className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold w-fit hover:bg-green-600 transition-colors"
-          >
-            <WhatsAppIcon className="w-4 h-4 fill-white" />
-            449 493 9383
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+        <div className="bg-green-wa/10 border border-green-wa/20 rounded-3xl p-6 flex flex-col items-center text-center group hover:bg-green-wa/20 transition-all">
+          <WhatsAppIcon className="w-10 h-10 fill-green-wa mb-3" />
+          <h3 className="font-black text-green-wa text-lg mb-1">Dulce Fresa</h3>
+          <p className="text-xs text-gray-text mb-4">Postres, arreglos y detalles</p>
+          <div className="flex gap-3 mb-4">
+            <a href="https://www.facebook.com/Dulce.Fresa.Ags/followers" target="_blank" className="p-2 bg-white rounded-full text-blue-600 shadow-sm hover:scale-110 transition-transform"><Facebook className="w-4 h-4" /></a>
+            <a href="https://www.instagram.com/dulce.fresa.deli/" target="_blank" className="p-2 bg-white rounded-full text-pink-600 shadow-sm hover:scale-110 transition-transform"><Instagram className="w-4 h-4" /></a>
+            <a href="https://www.tiktok.com/@dulce.fresa.ags2" target="_blank" className="p-2 bg-white rounded-full text-black shadow-sm hover:scale-110 transition-transform"><Music2 className="w-4 h-4" /></a>
+          </div>
+          <a href={`https://wa.me/${WA_DULCE}`} target="_blank" className="bg-green-wa text-white px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 shadow-lg shadow-green-200">
+            WhatsApp <ExternalLink className="w-4 h-4" />
           </a>
         </div>
-        <div className="bg-white border border-green-200 rounded-2xl p-4 flex flex-col gap-2 shadow-sm">
-          <h3 className="text-sm font-bold text-green-800 flex items-center gap-2">
-            🍌 Fresas de AGS — Fruta y congelados
-          </h3>
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Fruta fresca, fruta congelada y jugos congelados
-          </p>
-          <a 
-            href={`https://wa.me/${WA_FRESAS}?text=${encodeURIComponent('¡Hola! Me gustaría comprar de Fresas AGS 🍓')}`}
-            target="_blank"
-            className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold w-fit hover:bg-green-600 transition-colors"
-          >
-            <WhatsAppIcon className="w-4 h-4 fill-white" />
-            449 389 7519
+        <div className="bg-blue-50 border border-blue-100 rounded-3xl p-6 flex flex-col items-center text-center group hover:bg-blue-100 transition-all">
+          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mb-3 shadow-lg shadow-blue-200">
+            <Truck className="w-6 h-6 text-white" />
+          </div>
+          <h3 className="font-black text-blue-800 text-lg mb-1">Fresas AGS</h3>
+          <p className="text-xs text-gray-text mb-4">Fruta fresca y congelada</p>
+          <div className="flex gap-3 mb-4">
+            <a href="https://www.facebook.com/fresas.para.todos" target="_blank" className="p-2 bg-white rounded-full text-blue-700 shadow-sm hover:scale-110 transition-transform"><Facebook className="w-4 h-4" /></a>
+          </div>
+          <a href={`https://wa.me/${WA_FRESAS}`} target="_blank" className="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 shadow-lg shadow-blue-200">
+            WhatsApp <ExternalLink className="w-4 h-4" />
           </a>
         </div>
       </div>
 
       {/* Main Content Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
+      <div id="productos" className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
         {/* Products Section */}
         <section>
           <div className="flex gap-2 mb-4 overflow-x-auto pb-2 custom-scrollbar no-scrollbar">
@@ -272,15 +345,15 @@ export default function App() {
           </div>
         </section>
 
-        {/* Cart Panel */}
-        <aside className="lg:sticky lg:top-6">
+        {/* Cart Panel (Desktop) */}
+        <aside className="hidden lg:block sticky top-24 self-start">
           <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
             <h2 className="text-sm font-bold text-gray-900 mb-4 pb-3 border-b border-gray-50 flex items-center gap-2">
               <ShoppingCart className="w-4 h-4" />
               Mi pedido
             </h2>
             
-            <div className="space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar pr-1">
+            <div className="space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto custom-scrollbar pr-1">
               {cartItems.length === 0 ? (
                 <div className="text-center py-8 text-gray-400">
                   <ShoppingCart className="w-8 h-8 mx-auto mb-2 opacity-20" />
@@ -358,6 +431,182 @@ export default function App() {
         </aside>
       </div>
 
+      {/* Floating Cart Button (Mobile) */}
+      {cartItems.length > 0 && (
+        <div className="lg:hidden fixed bottom-6 right-6 z-50">
+          <button 
+            onClick={() => setIsCartMobileOpen(true)}
+            className="bg-[#880e4f] text-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 active:scale-95 transition-all"
+          >
+            <div className="relative">
+              <ShoppingCart className="w-6 h-6" />
+              <span className="absolute -top-2 -right-2 bg-white text-[#880e4f] text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
+                {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+              </span>
+            </div>
+            <span className="font-bold text-sm pr-2">${total}</span>
+          </button>
+        </div>
+      )}
+
+      {/* Mobile Cart Drawer Overlay */}
+      {isCartMobileOpen && (
+        <div className="lg:hidden fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div 
+            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[2.5rem] p-6 shadow-2xl animate-in slide-in-from-bottom duration-500 max-h-[90vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-black text-gray-900 flex items-center gap-3">
+                <ShoppingCart className="w-6 h-6 text-[#880e4f]" />
+                Tu Pedido
+              </h2>
+              <button 
+                onClick={() => setIsCartMobileOpen(false)}
+                className="p-2 bg-gray-100 rounded-full text-gray-500"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-4 mb-6 pr-2 custom-scrollbar">
+              {cartItems.map(item => (
+                <div key={item.id} className="flex items-center gap-4 p-3 bg-gray-50 rounded-2xl">
+                  <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-2xl overflow-hidden shrink-0 shadow-sm">
+                    {item.image ? (
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    ) : (
+                      item.emoji
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h5 className="text-sm font-bold text-gray-900 leading-tight mb-1">{item.name}</h5>
+                    <span className="text-xs text-red-price font-black">${item.subtotal}</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white rounded-xl p-2 shadow-sm">
+                    <button 
+                      onClick={() => changeQty(item.id, -1)}
+                      className="w-8 h-8 flex items-center justify-center text-[#880e4f] hover:bg-pink-50 rounded-lg transition-colors"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="text-sm font-black min-w-[20px] text-center">{item.qty}</span>
+                    <button 
+                      onClick={() => changeQty(item.id, 1)}
+                      className="w-8 h-8 flex items-center justify-center text-[#880e4f] hover:bg-pink-50 rounded-lg transition-colors"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-6 border-t border-gray-100">
+              <div className="flex justify-between items-center mb-6">
+                <span className="text-gray-500 font-bold">Total del pedido</span>
+                <span className="text-2xl font-black text-[#880e4f]">${total} MXN</span>
+              </div>
+              
+              <div className="grid grid-cols-1 gap-3">
+                {hasDulce && (
+                  <button 
+                    onClick={() => sendWA('dulce')}
+                    className="w-full bg-green-wa text-white rounded-2xl py-4 font-black flex items-center justify-center gap-3 shadow-lg shadow-green-200"
+                  >
+                    <WhatsAppIcon className="w-5 h-5 fill-white" />
+                    Pedir Dulce Fresa
+                  </button>
+                )}
+                {hasFresas && (
+                  <button 
+                    onClick={() => sendWA('fresas')}
+                    className="w-full bg-blue-600 text-white rounded-2xl py-4 font-black flex items-center justify-center gap-3 shadow-lg shadow-blue-200"
+                  >
+                    <WhatsAppIcon className="w-5 h-5 fill-white" />
+                    Pedir Fresas AGS
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Quienes Somos */}
+      <section id="nosotros" className="mt-12 bg-white p-8 rounded-3xl border border-pink-border shadow-sm overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="order-2 lg:order-1">
+            <h2 className="text-3xl font-bold text-[#880e4f] mb-4">Tu tiempo es nuestro compromiso</h2>
+            <p className="text-gray-600 leading-relaxed mb-8">
+              Desde 2019, somos una pareja de esposos dedicada a llevar lo mejor del mercado hasta tu puerta. 
+              Surgimos como una solución de apoyo en tiempos difíciles y hoy nos hemos consolidado como los 
+              aliados estratégicos de familias y empresas en Aguascalientes.
+            </p>
+
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-[#c2185b] flex items-center gap-2">
+                ¿Qué hacemos por ti?
+              </h3>
+              
+              <div className="grid gap-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Ahorro de tiempo</h4>
+                    <p className="text-sm text-gray-500">Olvídate de las filas y el tráfico; nosotros hacemos el súper por ti.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Experiencia</h4>
+                    <p className="text-sm text-gray-500">Más de 6 años atendiendo al sector privado y comercial.</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-pink-light rounded-full flex items-center justify-center text-[#880e4f]">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">Confianza</h4>
+                    <p className="text-sm text-gray-500">Calidad seleccionada personalmente, como si fuera para nuestra propia casa.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 p-6 bg-[#fce4ec] rounded-2xl border-l-4 border-[#880e4f]">
+              <p className="text-lg font-bold text-[#880e4f] italic">
+                "Nacimos para cuidarte, crecimos para servirte"
+              </p>
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-pink-light rounded-[2rem] -rotate-2 z-0"></div>
+              <img 
+                src="https://i.postimg.cc/HWb7sMkS/Whats-App-Image-2026-04-12-at-12-13-00.jpg" 
+                alt="Nosotros" 
+                className="relative z-10 w-full h-auto rounded-3xl shadow-xl object-cover aspect-[4/5]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-lg z-20 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+                <span className="font-bold text-gray-900">Desde 2019</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Misión y Visión */}
       <footer className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-pink-border pt-10 pb-10">
         <div className="bg-white p-6 rounded-3xl border border-pink-border shadow-sm">
@@ -379,7 +628,7 @@ export default function App() {
       </footer>
 
       {/* Mecánica de Entregas */}
-      <section className="mt-6 bg-white p-8 rounded-3xl border border-pink-border shadow-sm">
+      <section id="entregas" className="mt-6 bg-white p-8 rounded-3xl border border-pink-border shadow-sm">
         <h3 className="text-2xl font-bold text-[#880e4f] mb-6 flex items-center gap-3">
           <Truck className="w-6 h-6" /> Así manejamos las entregas
         </h3>
@@ -389,9 +638,20 @@ export default function App() {
             <h4 className="font-bold text-[#c2185b] flex items-center gap-2">
               <Clock className="w-4 h-4" /> El horario
             </h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Andamos repartiendo desde temprano, de <span className="font-bold text-[#880e4f]">8:00 am a 4:00 pm</span>.
-            </p>
+            <div className="space-y-4">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Rutas estándar</p>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Repartimos de <span className="font-bold text-[#880e4f]">8:00 am a 4:00 pm</span>.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-pink-100">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-pink-600 mb-1">Envíos personalizados</p>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  ¿Lo necesitas a una hora específica? Enviamos <span className="font-bold text-[#880e4f]">todos los días</span> de <span className="font-bold text-[#880e4f]">7:00 am a 10:00 pm</span> (intervalo de entrega de 1 hora, sujeto a agenda y disponibilidad).
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-3">
