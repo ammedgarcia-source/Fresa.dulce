@@ -27,5 +27,3 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   @apply bg-pink-border/30 rounded-full hover:bg-pink-border/50 transition-colors;
 }
-
-
