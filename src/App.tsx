@@ -105,11 +105,11 @@ export default function App() {
 
       <header className="bg-pink-light rounded-2xl p-6 mb-6 border border-pink-border shadow-sm flex flex-col items-center gap-6">
         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-          <img className="h-40 md:h-48 w-auto object-contain" src="https://i.postimg.cc/vxgQwNrv/2.gif" alt="Dulce Fresa" referrerPolicy="no-referrer" />
+          <img className="h-40 md:h-48 w-auto object-contain" src="https://i.postimg.cc/KjQ4BX4C/2.gif" alt="Dulce Fresa" referrerPolicy="no-referrer" />
           <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
-          <img className="h-28 md:h-32 w-auto object-contain" src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO(1).png" alt="Fresas AGS" referrerPolicy="no-referrer" />
+          <img className="h-28 md:h-32 w-auto object-contain" src="https://i.postimg.cc/7PJCqh9r/Fresas_LOGO(1).png" alt="Fresas AGS" referrerPolicy="no-referrer" />
           <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
-          <img className="h-32 md:h-40 w-auto object-contain" src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png" alt="Hecho en AGS" referrerPolicy="no-referrer" />
+          <img className="h-32 md:h-40 w-auto object-contain" src="https://i.postimg.cc/4385Ry5t/HECHO_EN_AGS_color_H.png" alt="Hecho en AGS" referrerPolicy="no-referrer" />
         </div>
         <div className="text-center">
           <p className="text-base md:text-lg font-bold text-[#880e4f] mb-1">Fresas y productos artesanales</p>
