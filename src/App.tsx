@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   MapPin, 
   ShoppingCart, 
@@ -72,6 +72,85 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.535 5.862L.057 23.428a.75.75 0 0 0 .916.916l5.566-1.478A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.523-5.187-1.435l-.372-.22-3.853 1.023 1.023-3.744-.241-.386A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
   </svg>
 );
+
+// YouTube Loop Component for seamless background videos
+const YouTubeLoop = ({ videoId }: { videoId: string }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const initPlayer = () => {
+      if (!containerRef.current || !mounted) return;
+      
+      playerRef.current = new (window as any).YT.Player(containerRef.current, {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          disablekb: 1,
+          showinfo: 0,
+          fs: 0,
+          autohide: 1,
+          origin: window.location.origin
+        },
+        events: {
+          onReady: (event: any) => {
+            event.target.mute();
+            event.target.playVideo();
+            if (mounted) setIsReady(true);
+          },
+          onStateChange: (event: any) => {
+            if (event.data === (window as any).YT.PlayerState.ENDED) {
+              event.target.seekTo(0);
+              event.target.playVideo();
+            }
+          }
+        }
+      });
+    };
+
+    if (!(window as any).YT || !(window as any).YT.Player) {
+      if (!(window as any).onYouTubeIframeAPIReady) {
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+        
+        (window as any).onYouTubeIframeAPIReady = () => {
+          window.dispatchEvent(new Event('youtube-api-ready'));
+        };
+      }
+      
+      const handleReady = () => initPlayer();
+      window.addEventListener('youtube-api-ready', handleReady);
+      return () => {
+        mounted = false;
+        window.removeEventListener('youtube-api-ready', handleReady);
+        if (playerRef.current) playerRef.current.destroy();
+      };
+    } else {
+      initPlayer();
+    }
+
+    return () => {
+      mounted = false;
+      if (playerRef.current) playerRef.current.destroy();
+    };
+  }, [videoId]);
+
+  return (
+    <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${isReady ? 'opacity-100' : 'opacity-0'}`}>
+      <div ref={containerRef} className="w-full h-full pointer-events-none"></div>
+    </div>
+  );
+};
 
 export default function App() {
   const [cart, setCart] = useState<Record<number, number>>({});
@@ -197,8 +276,13 @@ export default function App() {
           <div className="grid grid-cols-2 gap-4 relative">
             {/* Floating Images Grid */}
             <div className="space-y-4 pt-8">
-              <div className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-500">
-                <img src="https://i.postimg.cc/F1yH4tgs/image.jpg" className="w-full h-full object-cover" alt="Fresas con crema" referrerPolicy="no-referrer" />
+              <div 
+                className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-500 bg-cover bg-center"
+                style={{ backgroundImage: 'url(https://img.youtube.com/vi/DuY-jfs3klI/maxresdefault.jpg)' }}
+              >
+                <div className="absolute inset-0 w-full h-full scale-[1.78] origin-center">
+                  <YouTubeLoop videoId="DuY-jfs3klI" />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <p className="text-xs font-bold">Especialidades</p>
                 </div>
@@ -211,8 +295,13 @@ export default function App() {
               </div>
             </div>
             <div className="space-y-4">
-              <div className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500">
-                <img src="https://i.postimg.cc/RhWZFsKG/images-(3).jpg" className="w-full h-full object-cover" alt="Rosas" referrerPolicy="no-referrer" />
+              <div 
+                className="group relative overflow-hidden rounded-2xl aspect-square shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 bg-cover bg-center"
+                style={{ backgroundImage: 'url(https://img.youtube.com/vi/XglhLcr2tro/maxresdefault.jpg)' }}
+              >
+                <div className="absolute inset-0 w-full h-full scale-[1.78] origin-center">
+                  <YouTubeLoop videoId="XglhLcr2tro" />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <p className="text-xs font-bold">Flores</p>
                 </div>
@@ -397,62 +486,188 @@ export default function App() {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
-            {filteredProducts.map(product => (
-              <div key={product.id} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:border-pink-border transition-colors flex flex-col group">
-                <div 
-                  className="relative h-32 bg-pink-light flex items-center justify-center text-4xl overflow-hidden cursor-pointer"
-                  onClick={() => setSelectedProduct(product)}
-                >
-                  {product.image ? (
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : (
-                    product.emoji
-                  )}
+          {activeCat === 'Todos' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Column 1: Dulce Fresa */}
+              <div className="space-y-6">
+                <div className="sticky top-20 z-10 bg-white/90 backdrop-blur-sm py-2 border-b-2 border-pink-100 flex items-center justify-between">
+                  <h3 className="text-lg font-black text-[#880e4f] flex items-center gap-2">
+                    🍰 Postres y Arreglos
+                  </h3>
+                  <span className="text-[10px] font-bold bg-pink-light text-[#880e4f] px-2 py-0.5 rounded-full">Dulce Fresa</span>
                 </div>
-                <div className="p-3 flex flex-col flex-1">
-                  <div 
-                    className="mb-1 cursor-pointer"
-                    onClick={() => setSelectedProduct(product)}
-                  >
-                    <h4 className="text-xs font-bold text-gray-900 leading-tight group-hover:text-[#880e4f] transition-colors">
-                      {product.name}
-                    </h4>
-                    <span className={`inline-block text-[9px] px-2 py-0.5 rounded-full font-bold mt-1 ${
-                      product.wa === 'dulce' ? 'bg-pink-light text-[#880e4f]' : 'bg-blue-50 text-blue-800'
-                    }`}>
-                      {product.wa === 'dulce' ? 'Dulce Fresa' : 'Fresas AGS'}
-                    </span>
-                  </div>
-                  <p 
-                    className="text-[10px] text-gray-500 line-clamp-2 mb-3 leading-relaxed cursor-pointer"
-                    onClick={() => setSelectedProduct(product)}
-                  >
-                    {product.desc}
-                  </p>
-                  <div className="mt-auto flex items-center justify-between gap-2">
-                    <div className="flex flex-col">
-                      <span className="text-sm font-bold text-red-price">${product.price}</span>
-                      {product.oldPrice && (
-                        <span className="text-[10px] text-gray-400 line-through">${product.oldPrice}</span>
-                      )}
+                <div className="grid grid-cols-2 gap-3">
+                  {filteredProducts.filter(p => p.wa === 'dulce').map(product => (
+                    <div key={product.id} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:border-pink-border transition-colors flex flex-col group">
+                      <div 
+                        className="relative h-32 bg-pink-light flex items-center justify-center text-4xl overflow-hidden cursor-pointer"
+                        onClick={() => setSelectedProduct(product)}
+                      >
+                        {product.image ? (
+                          <img 
+                            src={product.image} 
+                            alt={product.name} 
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          product.emoji
+                        )}
+                      </div>
+                      <div className="p-3 flex flex-col flex-1">
+                        <div 
+                          className="mb-1 cursor-pointer"
+                          onClick={() => setSelectedProduct(product)}
+                        >
+                          <h4 className="text-xs font-bold text-gray-900 leading-tight group-hover:text-[#880e4f] transition-colors">
+                            {product.name}
+                          </h4>
+                        </div>
+                        <p 
+                          className="text-[10px] text-gray-500 line-clamp-2 mb-3 leading-relaxed cursor-pointer"
+                          onClick={() => setSelectedProduct(product)}
+                        >
+                          {product.desc}
+                        </p>
+                        <div className="mt-auto flex items-center justify-between gap-2">
+                          <div className="flex flex-col">
+                            <span className="text-sm font-bold text-red-price">${product.price}</span>
+                            {product.oldPrice && (
+                              <span className="text-[10px] text-gray-400 line-through">${product.oldPrice}</span>
+                            )}
+                          </div>
+                          <button 
+                            onClick={() => addToCart(product.id)}
+                            className="bg-pink-light border border-pink-border text-[#880e4f] rounded-lg px-3 py-1.5 text-[11px] font-bold hover:bg-[#f8bbd0] transition-colors"
+                          >
+                            + Agregar
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <button 
-                      onClick={() => addToCart(product.id)}
-                      className="bg-pink-light border border-pink-border text-[#880e4f] rounded-lg px-3 py-1.5 text-[11px] font-bold hover:bg-[#f8bbd0] transition-colors"
-                    >
-                      + Agregar
-                    </button>
-                  </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* Column 2: Fresas AGS */}
+              <div className="space-y-6">
+                <div className="sticky top-20 z-10 bg-white/90 backdrop-blur-sm py-2 border-b-2 border-blue-100 flex items-center justify-between">
+                  <h3 className="text-lg font-black text-blue-800 flex items-center gap-2">
+                    🍓 Fruta y Congelados
+                  </h3>
+                  <span className="text-[10px] font-bold bg-blue-50 text-blue-800 px-2 py-0.5 rounded-full">Fresas de AGS</span>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {filteredProducts.filter(p => p.wa === 'fresas').map(product => (
+                    <div key={product.id} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:border-blue-200 transition-colors flex flex-col group">
+                      <div 
+                        className="relative h-32 bg-blue-50 flex items-center justify-center text-4xl overflow-hidden cursor-pointer"
+                        onClick={() => setSelectedProduct(product)}
+                      >
+                        {product.image ? (
+                          <img 
+                            src={product.image} 
+                            alt={product.name} 
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          product.emoji
+                        )}
+                      </div>
+                      <div className="p-3 flex flex-col flex-1">
+                        <div 
+                          className="mb-1 cursor-pointer"
+                          onClick={() => setSelectedProduct(product)}
+                        >
+                          <h4 className="text-xs font-bold text-gray-900 leading-tight group-hover:text-blue-800 transition-colors">
+                            {product.name}
+                          </h4>
+                        </div>
+                        <p 
+                          className="text-[10px] text-gray-500 line-clamp-2 mb-3 leading-relaxed cursor-pointer"
+                          onClick={() => setSelectedProduct(product)}
+                        >
+                          {product.desc}
+                        </p>
+                        <div className="mt-auto flex items-center justify-between gap-2">
+                          <div className="flex flex-col">
+                            <span className="text-sm font-bold text-blue-800">${product.price}</span>
+                            {product.oldPrice && (
+                              <span className="text-[10px] text-gray-400 line-through">${product.oldPrice}</span>
+                            )}
+                          </div>
+                          <button 
+                            onClick={() => addToCart(product.id)}
+                            className="bg-blue-50 text-blue-800 p-2 rounded-xl hover:bg-blue-100 transition-colors"
+                          >
+                            <Plus className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
+              {filteredProducts.map(product => (
+                <div key={product.id} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:border-pink-border transition-colors flex flex-col group">
+                  <div 
+                    className="relative h-32 bg-pink-light flex items-center justify-center text-4xl overflow-hidden cursor-pointer"
+                    onClick={() => setSelectedProduct(product)}
+                  >
+                    {product.image ? (
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      product.emoji
+                    )}
+                  </div>
+                  <div className="p-3 flex flex-col flex-1">
+                    <div 
+                      className="mb-1 cursor-pointer"
+                      onClick={() => setSelectedProduct(product)}
+                    >
+                      <h4 className="text-xs font-bold text-gray-900 leading-tight group-hover:text-[#880e4f] transition-colors">
+                        {product.name}
+                      </h4>
+                      <span className={`inline-block text-[9px] px-2 py-0.5 rounded-full font-bold mt-1 ${
+                        product.wa === 'dulce' ? 'bg-pink-light text-[#880e4f]' : 'bg-blue-50 text-blue-800'
+                      }`}>
+                        {product.wa === 'dulce' ? 'Dulce Fresa' : 'Fresas AGS'}
+                      </span>
+                    </div>
+                    <p 
+                      className="text-[10px] text-gray-500 line-clamp-2 mb-3 leading-relaxed cursor-pointer"
+                      onClick={() => setSelectedProduct(product)}
+                    >
+                      {product.desc}
+                    </p>
+                    <div className="mt-auto flex items-center justify-between gap-2">
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-red-price">${product.price}</span>
+                        {product.oldPrice && (
+                          <span className="text-[10px] text-gray-400 line-through">${product.oldPrice}</span>
+                        )}
+                      </div>
+                      <button 
+                        onClick={() => addToCart(product.id)}
+                        className="bg-pink-light border border-pink-border text-[#880e4f] rounded-lg px-3 py-1.5 text-[11px] font-bold hover:bg-[#f8bbd0] transition-colors"
+                      >
+                        + Agregar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Cart Panel (Desktop) */}
@@ -813,7 +1028,7 @@ export default function App() {
       </footer>
 
       {/* Floating WhatsApp Button */}
-      <div className="fixed bottom-24 right-6 z-50 flex flex-col gap-3">
+      <div className="fixed bottom-24 right-6 z-50 flex flex-col gap-4 items-end">
         <a 
           href={`https://wa.me/${WA_DULCE}`}
           target="_blank"
@@ -822,8 +1037,9 @@ export default function App() {
           title="WhatsApp Dulce Fresa"
         >
           <WhatsAppIcon className="w-6 h-6 fill-white" />
-          <span className="absolute right-full mr-3 bg-white text-[#880e4f] text-[10px] font-bold px-2 py-1 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-pink-100">
-            Dulce Fresa
+          <span className="absolute right-full mr-3 bg-white text-[#880e4f] text-[10px] font-black px-3 py-1.5 rounded-lg shadow-lg border border-pink-100 whitespace-nowrap flex items-center gap-1 animate-in slide-in-from-right-2 duration-500">
+            <span className="w-1.5 h-1.5 bg-pink-500 rounded-full animate-pulse" />
+            DULCE FRESA (Postres)
           </span>
         </a>
         <a 
@@ -834,8 +1050,9 @@ export default function App() {
           title="WhatsApp Fresas AGS"
         >
           <WhatsAppIcon className="w-6 h-6 fill-white" />
-          <span className="absolute right-full mr-3 bg-white text-blue-800 text-[10px] font-bold px-2 py-1 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-blue-100">
-            Fresas AGS
+          <span className="absolute right-full mr-3 bg-white text-blue-800 text-[10px] font-black px-3 py-1.5 rounded-lg shadow-lg border border-blue-100 whitespace-nowrap flex items-center gap-1 animate-in slide-in-from-right-2 duration-700">
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+            FRESAS AGS (Fruta)
           </span>
         </a>
       </div>
