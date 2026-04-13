@@ -238,24 +238,24 @@ export default function App() {
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
             <img 
               className="h-40 md:h-48 w-auto object-contain" 
-              src="https://i.postimg.cc/vxgQwNrv/2.gif" 
+              src="https://i.postimg.cc/vxgQwNrv/2.gif?v=1.3.5" 
               alt="Dulce Fresa"
               referrerPolicy="no-referrer"
               loading="eager"
             />
             <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
             <img 
-              className="h-28 md:h-32 w-auto object-contain" 
-              src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO(1).png" 
-              alt="Fresas AGS"
+              className="h-32 md:h-40 w-auto object-contain" 
+              src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png?v=1.3.5" 
+              alt="Hecho en AGS"
               referrerPolicy="no-referrer"
               loading="eager"
             />
             <div className="hidden md:block w-px h-20 bg-pink-border opacity-50" />
             <img 
-              className="h-32 md:h-40 w-auto object-contain" 
-              src="https://i.postimg.cc/4385Ry5t/HECHO-EN-AGS-color-H.png" 
-              alt="Hecho en AGS"
+              className="h-28 md:h-32 w-auto object-contain" 
+              src="https://i.postimg.cc/7PJCqh9r/Fresas-LOGO(1).png?v=1.3.5" 
+              alt="Fresas AGS"
               referrerPolicy="no-referrer"
               loading="eager"
             />
@@ -268,11 +268,67 @@ export default function App() {
                 <MapPin className="w-4 h-4" />
                 Aguascalientes, AGS
               </span>
-              <div className="flex items-center gap-4 mt-2">
-                <a href="https://www.facebook.com/Dulce.Fresa.Ags/followers" target="_blank" rel="noopener noreferrer" className="text-[#1877F2] hover:scale-110 transition-transform"><Facebook className="w-6 h-6" /></a>
-                <a href="https://www.instagram.com/dulce.fresa.deli/" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:scale-110 transition-transform"><Instagram className="w-6 h-6" /></a>
-                <a href="https://www.tiktok.com/@dulce.fresa.ags2" target="_blank" rel="noopener noreferrer" className="text-black hover:scale-110 transition-transform"><Music2 className="w-6 h-6" /></a>
-                <a href="https://www.tiktok.com/@fresasdeags" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:scale-110 transition-transform"><Music2 className="w-6 h-6" /></a>
+              <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+                {/* Dulce Fresa Group */}
+                <div className="flex flex-col items-center gap-3">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#880e4f] mb-1">Dulce Fresa</span>
+                  <div className="flex items-center gap-3">
+                    <a 
+                      href="https://www.facebook.com/Dulce.Fresa.Ags/followers" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center w-11 h-11 bg-white rounded-full border-2 border-pink-100 shadow-md hover:border-pink-300 hover:scale-110 transition-all text-[#1877F2]"
+                      title="Facebook Dulce Fresa"
+                    >
+                      <Facebook size={22} strokeWidth={2.5} />
+                    </a>
+                    <a 
+                      href="https://www.instagram.com/dulce.fresa.deli/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center w-11 h-11 bg-white rounded-full border-2 border-pink-100 shadow-md hover:border-pink-300 hover:scale-110 transition-all text-[#E4405F]"
+                      title="Instagram Dulce Fresa"
+                    >
+                      <Instagram size={22} strokeWidth={2.5} />
+                    </a>
+                    <a 
+                      href="https://www.tiktok.com/@dulce.fresa.ags2" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center w-11 h-11 bg-white rounded-full border-2 border-pink-100 shadow-md hover:border-pink-300 hover:scale-110 transition-all text-black"
+                      title="TikTok Dulce Fresa"
+                    >
+                      <Music2 size={22} strokeWidth={2.5} />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="hidden md:block w-px h-16 bg-pink-200 opacity-50" />
+
+                {/* Fresas AGS Group */}
+                <div className="flex flex-col items-center gap-3">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-800 mb-1">Fresas de AGS</span>
+                  <div className="flex items-center gap-3">
+                    <a 
+                      href="https://www.facebook.com/fresas.para.todos" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center w-11 h-11 bg-white rounded-full border-2 border-blue-100 shadow-md hover:border-blue-300 hover:scale-110 transition-all text-[#1877F2]"
+                      title="Facebook Fresas AGS"
+                    >
+                      <Facebook size={22} strokeWidth={2.5} />
+                    </a>
+                    <a 
+                      href="https://www.tiktok.com/@fresasdeags" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center w-11 h-11 bg-white rounded-full border-2 border-blue-100 shadow-md hover:border-blue-300 hover:scale-110 transition-all text-blue-600"
+                      title="TikTok Fresas AGS"
+                    >
+                      <Music2 size={22} strokeWidth={2.5} />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -293,37 +349,10 @@ export default function App() {
               href={`https://wa.me/${WA_DULCE}?text=${encodeURIComponent('¡Hola! Me gustaría pedir de Dulce Fresa 🍓')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-green-600 transition-colors"
+              className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-6 py-2.5 text-sm font-bold hover:bg-green-600 transition-colors shadow-sm"
             >
-              <WhatsAppIcon className="w-4 h-4 fill-white" />
-              WhatsApp
-            </a>
-            <a 
-              href="https://www.facebook.com/Dulce.Fresa.Ags/followers"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-[#166fe5] transition-colors"
-            >
-              <Facebook className="w-4 h-4" />
-              Facebook
-            </a>
-            <a 
-              href="https://www.instagram.com/dulce.fresa.deli/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#E4405F] text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-[#d62e4c] transition-colors"
-            >
-              <Instagram className="w-4 h-4" />
-              Instagram
-            </a>
-            <a 
-              href="https://www.tiktok.com/@dulce.fresa.ags2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-black text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-gray-900 transition-colors"
-            >
-              <Music2 className="w-4 h-4" />
-              TikTok
+              <WhatsAppIcon className="w-5 h-5 fill-white" />
+              Pedir por WhatsApp
             </a>
           </div>
         </div>
@@ -339,28 +368,10 @@ export default function App() {
               href={`https://wa.me/${WA_FRESAS}?text=${encodeURIComponent('¡Hola! Me gustaría comprar de Fresas AGS 🍓')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-green-600 transition-colors"
+              className="inline-flex items-center gap-2 bg-green-wa text-white rounded-lg px-6 py-2.5 text-sm font-bold hover:bg-green-600 transition-colors shadow-sm"
             >
-              <WhatsAppIcon className="w-4 h-4 fill-white" />
-              WhatsApp
-            </a>
-            <a 
-              href="https://www.facebook.com/fresas.para.todos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#1877F2] text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-[#166fe5] transition-colors"
-            >
-              <Facebook className="w-4 h-4" />
-              Facebook
-            </a>
-            <a 
-              href="https://www.tiktok.com/@fresasdeags"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white rounded-lg px-4 py-2 text-xs font-bold hover:bg-blue-700 transition-colors"
-            >
-              <Music2 className="w-4 h-4" />
-              TikTok
+              <WhatsAppIcon className="w-5 h-5 fill-white" />
+              Pedir por WhatsApp
             </a>
           </div>
         </div>
@@ -793,47 +804,10 @@ export default function App() {
       {/* Final Footer */}
       <footer className="mt-12 mb-12 text-center border-t border-pink-border pt-10">
         <div className="flex flex-col items-center gap-6">
-          <div className="flex items-center gap-6">
-            <a 
-              href="https://www.facebook.com/Dulce.Fresa.Ags/followers" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-white border border-gray-100 rounded-full shadow-sm hover:scale-110 transition-transform text-[#1877F2]"
-              title="Facebook Dulce Fresa"
-            >
-              <Facebook className="w-6 h-6" />
-            </a>
-            <a 
-              href="https://www.instagram.com/dulce.fresa.deli/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-white border border-gray-100 rounded-full shadow-sm hover:scale-110 transition-transform text-[#E4405F]"
-              title="Instagram Dulce Fresa"
-            >
-              <Instagram className="w-6 h-6" />
-            </a>
-            <a 
-              href="https://www.tiktok.com/@dulce.fresa.ags2" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-white border border-gray-100 rounded-full shadow-sm hover:scale-110 transition-transform text-black"
-              title="TikTok Dulce Fresa"
-            >
-              <Music2 className="w-6 h-6" />
-            </a>
-            <a 
-              href="https://www.tiktok.com/@fresasdeags" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-white border border-gray-100 rounded-full shadow-sm hover:scale-110 transition-transform text-blue-600"
-              title="TikTok Fresas AGS"
-            >
-              <Music2 className="w-6 h-6" />
-            </a>
-          </div>
           <div className="space-y-2">
             <p className="text-sm font-bold text-[#880e4f]">© 2026 Dulce Fresa & Fresas de AGS</p>
             <p className="text-xs text-gray-400">Aguascalientes, México</p>
+            <p className="text-[10px] text-gray-300 mt-4">v1.3.7 — Completo</p>
           </div>
         </div>
       </footer>
